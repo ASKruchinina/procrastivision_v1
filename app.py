@@ -4,7 +4,6 @@ import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
 import plotly.express as px
 
 @st.cache_data
