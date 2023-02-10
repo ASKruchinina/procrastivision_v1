@@ -4,5 +4,4 @@ numpy
 altair
 matplotlib
 seaborn
-os
 plotly
