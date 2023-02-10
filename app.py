@@ -7,7 +7,7 @@ import seaborn as sns
 import os
 import plotly.express as px
 
-@st.cache
+@st.cache_data
 def get_data():
      #return pd.read_csv(os.path.join(os.getcwd(),'data/SM_Survey_UPSA-2020.csv'),delimiter=';')
      return pd.read_csv(os.path.join(os.getcwd(),'SM_Survey_UPSA-2020_clean.csv'))
