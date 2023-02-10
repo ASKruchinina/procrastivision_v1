@@ -129,51 +129,5 @@ ax4.set_title("Notifications vs GPA")
 fig.set_tight_layout(True)
 st.pyplot(fig)
 
-st.header('Altair graph')
-c = alt.Chart(df).mark_circle().encode(
-    x='Groups',
-    y='Time',
-    color='Gender',
-    shape='Gender'
-).interactive()
-st.altair_chart(c)
-
-st.header('Altair graph GPA')
-c = alt.Chart(df).mark_circle().encode(
-    x='Groups',
-    y='Time',
-    color='GPA',
-    size='GPA',
-    tooltip=['Groups','Time','GPA']
-).interactive()
-st.altair_chart(c, use_container_width=True)
-
-st.header('Friends-Groups-Notifications')
-
-mc = alt.Chart(df).mark_circle().encode(
-    alt.X('Friends'),
-    alt.Y('Groups'),
-    size='Notifications',
-    color='Notifications'
-)
-st.altair_chart(mc)
-
-st.header('Altair Friends-Groups-GPA')
-
-fgg = alt.Chart(df).mark_circle().encode(
-    alt.X('Friends'),
-    alt.Y('Groups'),
-    size='GPA',
-    color='GPA'
-)
-st.altair_chart(fgg)
-
-
-st.header('Plotly')
-f = px.scatter(df,x='Friends',
-                y = 'Groups',
-                color='GPA')
-st.plotly_chart(f)
-
 
 st.caption('Stay calm and be productive :tada:')
