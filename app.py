@@ -9,7 +9,7 @@ def get_data():
      return pd.read_csv('SM_Survey_UPSA-2020_clean.csv')
 
  
-def aleksandra_plot():
+def lineplot():
     df = pd.read_csv('SM_Survey_UPSA-2020_clean.csv')
     st.header("Academic performance, GPA, and 4 related social media usage metrics :tada:")
     #st.markdown("These two blocks of graphs help to see clearly the relationship between students academic performance and the four metrics of social media usage as Time, Groups, Friends, Notifications. We have GPA on the y axis and the aforementioned metrics on the x axis, the lines reflect the mean and 95\% confidence interval ("blurred" areas). So, from the first graph it is clear that the more time a student spends on social media, the lower is his GPA. Plus, in the first block we can see the differences between genders. From this particular dataset, we can say that there is not much difference between males in females, except for 2 particular tails: for example, people with 4000 friends tend to have better GPA than those with 3000. Same for the notifications. \n \t Finally, there is the second block which shows difference for age groups. One can see that students below 30 y.o. having 4000 friends are performing better than elder students. So there is some positive relationship between media usage and academic performance.")
@@ -74,12 +74,12 @@ def aleksandra_plot():
 def main():
     # Set the background color to a light gray
     st.set_page_config(page_title="Procrasti-vision",
-                  page_icon=":guardsman:",
+                  page_icon=":alarm_clock:",
                   layout="wide")
     selected_tab = st.sidebar.radio("Menu", ["Description", "Statistics", "Plots"])
    
     if selected_tab == 'Plots':
-        f = aleksandra_plot()
+        f = lineplot()
         st.pyplot(f)
 
     elif selected_tab == 'Description':
@@ -88,14 +88,14 @@ def main():
 
         st.markdown("""
 
-        This visualisation shows the relationship between students academic performance expressed via `GPA` (grade point average) and 4 related `social media usage metrics`: 
+        This visualisation is the result of a class project and shows the relationship between students academic performance expressed via `GPA` (grade point average) and 4 related `social media usage metrics`: 
         - **Time** refers to average number of hours a student spends daily on social media,
         - **Groups** represents to the number of social media groups a student belongs to,
         - **Freinds** is the number of social media friends a student has,
-        - **Notifications** - the average number of times each student checks his phone notifications per day.
+        - **Notifications** refers to the average number of times each student checks his phone notifications per day.
 
         **WHAT** the visualizations show;
-        It is the result of an online survey where a random sample of 623 students was asked to self-reflect about
+        These visualisations are based on an online survey where a random sample of 623 students was asked to self-reflect about
         their usage of social media, so Mohammed Nurudeen and his team could measure the effect of social media on
         academic performance. This application of social media may have some benefits for students’ academic performance.
         Nonetheless, social media may have an addicting effect that could lead to several things including
@@ -104,7 +104,7 @@ def main():
 
         **WHO** the visualization is for: parents, teachers and students.
 
-        **WHY** we the audience should care about it: while striving for performance one needs to decrease the potential non productive time.
+        **WHY** the audience should care about it: while striving for performance one needs to decrease the potential non productive time.
 
         """)
 
@@ -127,7 +127,7 @@ def main():
             #st.write(correlation)
             st.pyplot(fig)
 
-        st.write(df.info())
+        #st.write(df.info())
         
 
         
