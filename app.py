@@ -1,6 +1,5 @@
 import streamlit as st 
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -13,12 +12,13 @@ def get_data():
 def aleksandra_plot():
     df = pd.read_csv('SM_Survey_UPSA-2020_clean.csv')
     st.header("Academic performance, GPA, and 4 related social media usage metrics :tada:")
+    #st.markdown("These two blocks of graphs help to see clearly the relationship between students academic performance and the four metrics of social media usage as Time, Groups, Friends, Notifications. We have GPA on the y axis and the aforementioned metrics on the x axis, the lines reflect the mean and 95\% confidence interval ("blurred" areas). So, from the first graph it is clear that the more time a student spends on social media, the lower is his GPA. Plus, in the first block we can see the differences between genders. From this particular dataset, we can say that there is not much difference between males in females, except for 2 particular tails: for example, people with 4000 friends tend to have better GPA than those with 3000. Same for the notifications. \n \t Finally, there is the second block which shows difference for age groups. One can see that students below 30 y.o. having 4000 friends are performing better than elder students. So there is some positive relationship between media usage and academic performance.")
     st.markdown("- How the user can see the comparison of GPA and 4 related social media usage metrics: Time, Groups, Friends, Notifications by Gender and different Age groups. \n \t For example, one can see that the more students spend time browsing media - the smaller GPA they have.\n \t In addition, in the first part we can observe the differences for males and females, and below we can see the differences for the three age groups.")
     st.subheader("By Genders")
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(ncols=2,nrows=2, figsize=(10, 6)) #, figsize=(10, 10)
  
-    sns.lineplot(ax=ax1, data=df, x="Time", y="GPA", hue="Gender",style="Gender", ci=None)
-    sns.lineplot(ax=ax2, data=df, x="Groups", y="GPA", hue="Gender",style="Gender", ci=None)
+    sns.lineplot(ax=ax1, data=df, x="Time", y="GPA", hue="Gender",style="Gender")
+    sns.lineplot(ax=ax2, data=df, x="Groups", y="GPA", hue="Gender",style="Gender")
     ax1.set_title("Time vs GPA")
     ax1.set_xlim(1,5)
     ax1.set_ylim(1,4)
@@ -28,8 +28,8 @@ def aleksandra_plot():
     ax2.set_ylim(1,4)
     ax2.legend(loc=3, prop={'size': 6})
 
-    sns.lineplot(ax=ax3, data=df, x="Friends", y="GPA", hue="Gender",style="Gender", ci=None)
-    sns.lineplot(ax=ax4, data=df, x="Notifications", y="GPA", hue="Gender",style="Gender", ci=None)
+    sns.lineplot(ax=ax3, data=df, x="Friends", y="GPA", hue="Gender",style="Gender")
+    sns.lineplot(ax=ax4, data=df, x="Notifications", y="GPA", hue="Gender",style="Gender")
     ax3.set_title("Friends vs GPA")
     ax3.set_xlim(1000,4000)
     ax3.set_ylim(1,4)
@@ -46,8 +46,8 @@ def aleksandra_plot():
 
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(ncols=2,nrows=2, figsize=(10, 6)) #, figsize=(10, 10)
     
-    sns.lineplot(ax=ax1, data=df, x="Time", y="GPA", hue="Age Group", style="Age Group", ci=None)
-    sns.lineplot(ax=ax2, data=df, x="Groups", y="GPA", hue="Age Group",style="Age Group", ci=None)
+    sns.lineplot(ax=ax1, data=df, x="Time", y="GPA", hue="Age Group", style="Age Group")
+    sns.lineplot(ax=ax2, data=df, x="Groups", y="GPA", hue="Age Group",style="Age Group")
     ax1.set_title("Time vs GPA")
     ax1.set_xlim(1,5)
     ax1.set_ylim(1,4)
@@ -57,8 +57,8 @@ def aleksandra_plot():
     ax2.set_ylim(1,4)
     ax2.legend(loc=3, prop={'size': 6})
 
-    sns.lineplot(ax=ax3, data=df, x="Friends", y="GPA", hue="Age Group",style="Age Group", ci=None)
-    sns.lineplot(ax=ax4, data=df, x="Notifications", y="GPA", hue="Age Group",style="Age Group", ci=None)
+    sns.lineplot(ax=ax3, data=df, x="Friends", y="GPA", hue="Age Group",style="Age Group")
+    sns.lineplot(ax=ax4, data=df, x="Notifications", y="GPA", hue="Age Group",style="Age Group")
     ax3.set_title("Friends vs GPA")
     ax3.set_xlim(1000,4000)
     ax3.set_ylim(1,4)
@@ -107,6 +107,7 @@ def main():
         **WHY** we the audience should care about it: while striving for performance one needs to decrease the potential non productive time.
 
         """)
+
     elif selected_tab == 'Statistics':
         df = get_data()
 
